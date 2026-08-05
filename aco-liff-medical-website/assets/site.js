@@ -1,4 +1,36 @@
 (() => {
+  // Global page-loading spinner (logo with spinning ring)
+  const loaderMarkup = `
+    <div class="page-loader" data-page-loader aria-hidden="true">
+      <div class="loader-logo">
+        <img src="assets/aco-liff-logo.png" alt="Aco Liff Medical Supplies Ltd" />
+      </div>
+    </div>
+  `;
+
+  document.body.insertAdjacentHTML('afterbegin', loaderMarkup);
+  const loader = document.querySelector('[data-page-loader]');
+
+  const hideLoader = () => {
+    if (!loader) return;
+    loader.classList.add('is-hidden');
+    loader.addEventListener('transitionend', () => loader.remove(), { once: true });
+  };
+
+  // Hide once the page resources have finished loading (with a small minimum display time)
+  let started = Date.now();
+  const finish = () => {
+    const elapsed = Date.now() - started;
+    const remaining = Math.max(0, 350 - elapsed);
+    window.setTimeout(hideLoader, remaining);
+  };
+
+  if (document.readyState === 'complete') {
+    finish();
+  } else {
+    window.addEventListener('load', finish);
+  }
+
   const body = document.body;
   const toggle = document.querySelector('[data-nav-toggle]');
   const nav = document.querySelector('[data-nav]');
