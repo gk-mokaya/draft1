@@ -612,7 +612,7 @@ main {
 }
 
 .glass-card {
-  background: linear-gradient(180deg, rgba(248, 248, 248, 0.92), rgba(253, 253, 253, 0.9));
+  background: linear-gradient(180deg, rgba(14, 30, 53, 0.92), rgba(9, 18, 32, 0.9));
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow);
@@ -2338,12 +2338,14 @@ body::before {
 }
 
 .contact-card {
-  background: linear-gradient(180deg, rgba(14, 33, 63, 0.98), rgba(8, 20, 38, 0.98));
+  background:
+    radial-gradient(circle at top right, rgba(47, 125, 255, 0.08), transparent 26%),
+    linear-gradient(180deg, #ffffff 0%, #f7fbff 100%);
 }
 
 .contact-list li,
 .stacked-list .row {
-  border-bottom-color: rgba(255, 255, 255, 0.08);
+  border-bottom-color: rgba(7, 17, 31, 0.08);
 }
 
 .banner {
