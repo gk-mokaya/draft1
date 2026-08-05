@@ -4,6 +4,8 @@
   const nav = document.querySelector('[data-nav]');
   const year = document.querySelector('[data-year]');
   const contactForm = document.querySelector('#contact-form');
+  const submitButton = document.querySelector('[data-submit-button]');
+  const submitLabel = document.querySelector('[data-submit-label]');
   const contactStatus = document.querySelector('[data-contact-status]');
 
   if (year) {
@@ -34,11 +36,63 @@
     });
   }
 
-  if (contactForm && contactStatus) {
-    contactForm.addEventListener('submit', (event) => {
+  if (contactForm) {
+    contactForm.addEventListener('submit', async (event) => {
       event.preventDefault();
-      contactStatus.textContent = 'Thanks. Your request has been captured and is ready to be connected to your live email or CRM workflow.';
-      contactStatus.style.color = 'var(--blue-3)';
+
+      const formData = new FormData(contactForm);
+      const fields = Object.fromEntries(formData.entries());
+
+      if (submitButton) {
+        submitButton.classList.add('is-loading');
+        submitButton.setAttribute('disabled', 'disabled');
+      }
+
+      if (submitLabel) {
+        submitLabel.textContent = 'Sending...';
+      }
+
+      if (contactStatus) {
+        contactStatus.textContent = 'Sending your message to the team...';
+        contactStatus.style.color = 'var(--muted-dark)';
+      }
+
+      try {
+        const response = await fetch('/api/contact', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(fields)
+        });
+
+        const payload = await response.json().catch(() => ({}));
+
+        if (!response.ok) {
+          throw new Error(payload.error || 'Unable to send message right now.');
+        }
+
+        contactForm.reset();
+
+        if (contactStatus) {
+          contactStatus.textContent = 'Thanks. Your inquiry was sent successfully.';
+          contactStatus.style.color = 'var(--blue-3)';
+        }
+      } catch (error) {
+        if (contactStatus) {
+          contactStatus.textContent = error instanceof Error ? error.message : 'Something went wrong while sending the message.';
+          contactStatus.style.color = '#b42318';
+        }
+      } finally {
+        if (submitButton) {
+          submitButton.classList.remove('is-loading');
+          submitButton.removeAttribute('disabled');
+        }
+
+        if (submitLabel) {
+          submitLabel.textContent = 'Submit inquiry';
+        }
+      }
     });
   }
 

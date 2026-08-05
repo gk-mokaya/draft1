@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -7,7 +7,7 @@
   <meta name="description" content="Contact Aco Liff Medical Supplies Ltd for quotations, procurement questions, and partnership discussions." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/site.css" />
 </head>
 <body>
@@ -53,12 +53,13 @@
           <div class="hero-visual">
             <img class="hero-main-image" src="assets/hospital-care.jpg" alt="Healthcare support environment" />
             <div class="hero-visual-copy">
-              <span class="panel-tag">Get help fast</span>
+                            <span class="panel-tag">Get help fast</span>
               <blockquote>
                 "Every call to action should feel as trustworthy as the rest of the brand."
               </blockquote>
               <p>
-                The contact hero now opens with an inviting image and a calmer, more premium layout for inquiries.
+                Use this page to request quotations, ask about product availability, or
+                start a procurement conversation with the team.
               </p>
             </div>
           </div>
@@ -71,12 +72,12 @@
         <div class="contact-grid split-grid">
           <form class="form-card" id="contact-form">
             <span class="tiny-label">Send a message</span>
-            <h2 style="margin:0 0 10px; font-family:'Space Grotesk', 'Inter', sans-serif; letter-spacing:-0.04em; font-size:clamp(2rem, 4vw, 3rem); color:#07111f;">Tell us what you need.</h2>
+            <h2 class="card-heading light">Tell us what you need.</h2>
             <p class="muted-note" style="margin-top:0;">Use this form to request quotations, product information, or support for your next procurement order.</p>
             <div class="form-grid" style="margin-top:22px;">
               <div class="field">
                 <label for="name">Full name</label>
-                <input id="name" name="name" type="text" placeholder="Your full name" />
+                <input id="name" name="name" type="text" placeholder="Your full name" required />
               </div>
               <div class="field">
                 <label for="organization">Organization</label>
@@ -84,19 +85,20 @@
               </div>
               <div class="field">
                 <label for="email">Email</label>
-                <input id="email" name="email" type="email" placeholder="name@organization.com" />
+                <input id="email" name="email" type="email" placeholder="name@organization.com" required />
               </div>
               <div class="field">
                 <label for="phone">Phone</label>
-                <input id="phone" name="phone" type="tel" placeholder="+000 000 000 000" />
+                <input id="phone" name="phone" type="tel" placeholder="+254 728 444 722" required />
               </div>
               <div class="field">
                 <label for="category">Primary interest</label>
-                <select id="category" name="category">
+                <select id="category" name="category" required>
+                  <option value="" selected disabled>Select a product area</option>
                   <option>Certified consumables</option>
                   <option>Analytical instruments</option>
                   <option>Research and development</option>
-                  <option>Mobility and hospital equipment</option>
+                  <option>Mobility and hospital care</option>
                   <option>Safety and PPE</option>
                 </select>
               </div>
@@ -110,34 +112,37 @@
                 </select>
               </div>
               <div class="field full">
-                <label for="message">Project details</label>
-                <textarea id="message" name="message" rows="7" placeholder="Tell us about the products, quantities, or support you need."></textarea>
+                <label for="message">Message Body</label>
+                <textarea id="message" name="message" rows="7" placeholder="Tell us about the products, quantities, or support you need." required></textarea>
               </div>
               <div class="field full">
-                <button class="btn btn-primary" type="submit">Submit inquiry</button>
+                <button class="btn btn-primary submit-button" type="submit" data-submit-button>
+                  <span class="button-spinner" aria-hidden="true"></span>
+                  <span data-submit-label>Submit inquiry</span>
+                </button>
               </div>
               <div class="field full">
-                <p class="muted-note" data-contact-status style="margin:0;">This form is ready to connect to a backend or email workflow.</p>
+                <p class="muted-note form-status" data-contact-status aria-live="polite" style="margin:0;"></p>
               </div>
             </div>
           </form>
 
           <aside class="contact-card glass-card">
             <span class="tiny-label">Contact details</span>
-            <h2 style="margin:0 0 10px; font-family:'Space Grotesk', 'Inter', sans-serif; letter-spacing:-0.04em; font-size:clamp(2rem, 4vw, 3rem);">Best ways to reach the team.</h2>
+            <h2 class="card-heading">Best ways to reach the team.</h2>
             <p class="muted-note" style="color:var(--muted); margin-top:0;">Use the direct contact details below to reach the team for quotations, sourcing, and product support.</p>
             <ul class="contact-list" style="margin-top:20px;">
               <li>
                 <strong>Phone</strong>
-                <span>+000 000 000 000</span>
+                <span>+254 728 444 722</span>
               </li>
               <li>
                 <strong>Email</strong>
-                <span>hello@acoliffmedicalsupplies.com</span>
+                <span><a href="mailto:acoliffmed@protonmail.com">acoliffmed@protonmail.com</a></span>
               </li>
               <li>
                 <strong>Office</strong>
-                <span>Eldoret, Kenya</span>
+                <span>P.O. Box 125, 00521 Nairobi, Kenya</span>
               </li>
               <li>
                 <strong>Working hours</strong>
@@ -165,7 +170,7 @@
 
     <section class="section light">
       <div class="container">
-        <div class="section-title light">
+                <div class="section-title light">
           <span class="eyebrow light">Support notes</span>
           <h2>What buyers often want to know before they send a request.</h2>
           <p>
@@ -174,19 +179,19 @@
           </p>
         </div>
         <div class="faq-grid">
-          <article class="faq-item">
+                    <article class="faq-item">
             <h3>Can you support project or bulk orders?<span>+</span></h3>
-            <p>Yes. The structure is written to support quotation-based purchasing, recurring supply, and larger institutional requests.</p>
+            <p>Yes. Aco Liff is set up for quotation-based purchasing, recurring supply, and larger institutional requests.</p>
           </article>
-          <article class="faq-item">
+                    <article class="faq-item">
             <h3>Do you work with laboratories and hospitals?<span>+</span></h3>
-            <p>Yes. The content and solution architecture directly serve healthcare, research, industrial, environmental, and education-focused buyers.</p>
+            <p>Yes. The content and solution structure directly serve healthcare, research, industrial, environmental, and education-focused buyers.</p>
           </article>
-          <article class="faq-item">
+                    <article class="faq-item">
             <h3>Can the website grow later?<span>+</span></h3>
             <p>Absolutely. The shared design system is reusable, so additional service pages, catalog pages, or campaign landing pages can be added easily.</p>
           </article>
-          <article class="faq-item">
+                    <article class="faq-item">
             <h3>Is the design responsive?<span>+</span></h3>
             <p>Yes. The layout stacks cleanly for tablets and phones while keeping the premium hierarchy and card rhythm intact.</p>
           </article>
@@ -197,32 +202,14 @@
     <section class="section">
       <div class="container">
         <div class="support-grid">
-          <article class="support-card">
-            <div class="icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 3v18"></path><path d="M5 8h14"></path>
-              </svg>
-            </div>
-            <h3>Need a quotation</h3>
-            <p>Send product names, quantities, and any preferred brands or standards so a quotation can be built quickly.</p>
-          </article>
-          <article class="support-card">
-            <div class="icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="8"></circle><path d="M8 12h8"></path>
-              </svg>
-            </div>
-            <h3>Need a product match</h3>
-            <p>If you are unsure what to order, describe the application and the team can guide you toward the right category.</p>
-          </article>
-          <article class="support-card">
+                    <article class="support-card">
             <div class="icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M4 6h16v12H4z"></path><path d="M7 10h10"></path>
               </svg>
             </div>
             <h3>Need ongoing support</h3>
-            <p>The website presentation supports repeat purchases, procurement tracking, and future content expansion for service updates.</p>
+            <p>Aco Liff supports repeat purchases, procurement tracking, and future service updates for institutional buyers.</p>
           </article>
           <article class="support-card">
             <div class="icon" aria-hidden="true">
@@ -278,21 +265,22 @@
           <ul>
             <li><a href="solutions.html">Certified consumables</a></li>
             <li><a href="solutions.html">Analytical instruments</a></li>
-            <li><a href="solutions.html">Mobility and hospital equipment</a></li>
+            <li><a href="solutions.html">Mobility and hospital care</a></li>
             <li><a href="solutions.html">Safety and PPE</a></li>
           </ul>
         </div>
         <div>
           <h4>Contact</h4>
           <ul>
-            <li>+000 000 000 000</li>
-            <li>hello@acoliffmedicalsupplies.com</li>
-            <li>Eldoret, Kenya</li>
+            <li>+254 728 444 722</li>
+            <li><a href="mailto:acoliffmed@protonmail.com">acoliffmed@protonmail.com</a></li>
+            <li>P.O. Box 125, 00521 Nairobi, Kenya</li>
+            <li><a href="https://www.acoliffmed.com" target="_blank" rel="noopener noreferrer">www.acoliffmed.com</a></li>
           </ul>
         </div>
       </div>
     <div class="footer-bottom">
-      <span>© 2026 Aco Liff Medical Supplies Ltd. All rights reserved.</span>
+      <span>&copy; 2026 Aco Liff Medical Supplies Ltd. All rights reserved.</span>
       <span>Supported by <a href="https://gksolutions.co.ke/" target="_blank" rel="noopener noreferrer">GK Solutions</a></span>
     </div>
   </footer>
@@ -300,3 +288,4 @@
   <script src="assets/site.js"></script>
 </body>
 </html>
+
