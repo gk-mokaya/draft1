@@ -2180,6 +2180,18 @@ body::before {
   color: var(--muted-dark);
 }
 
+/* ACO LIFF brand name — bold, blue, italic, stylish */
+.brand-copy span {
+  color: var(--blue-3);
+  font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+  font-weight: 900;
+  font-style: italic;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-shadow: 0 1px 0 rgba(47, 125, 255, 0.18);
+  font-size: 1.05rem;
+}
+
 .nav-toggle {
   border-color: rgba(47, 125, 255, 0.16);
   background: rgba(255, 255, 255, 0.9);
