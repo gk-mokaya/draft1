@@ -74,10 +74,13 @@
 
       const formData = new FormData(contactForm);
       const fields = Object.fromEntries(formData.entries());
+      const accessKey = String(fields.access_key || '').trim();
+      const endpoint = 'https://api.web3forms.com/submit';
 
       if (submitButton) {
         submitButton.classList.add('is-loading');
         submitButton.setAttribute('disabled', 'disabled');
+        submitButton.setAttribute('aria-busy', 'true');
       }
 
       if (submitLabel) {
@@ -90,9 +93,15 @@
       }
 
       try {
-        const response = await fetch('/api/contact', {
+        if (!accessKey || accessKey === 'YOUR_WEB3FORMS_ACCESS_KEY') {
+          throw new Error('Add your Web3Forms access key before using the form.');
+        }
+
+        const response = await fetch(endpoint, {
           method: 'POST',
+          mode: 'cors',
           headers: {
+            Accept: 'application/json',
             'Content-Type': 'application/json'
           },
           body: JSON.stringify(fields)
@@ -100,11 +109,14 @@
 
         const payload = await response.json().catch(() => ({}));
 
-        if (!response.ok) {
-          throw new Error(payload.error || 'Unable to send message right now.');
+        if (!response.ok || !payload.success) {
+          throw new Error(payload.message || payload.error || 'Unable to send message right now.');
         }
 
         contactForm.reset();
+        contactForm.querySelector('[name="access_key"]')?.setAttribute('value', accessKey);
+        contactForm.querySelector('[name="subject"]')?.setAttribute('value', 'New inquiry from acoliffmed.com');
+        contactForm.querySelector('[name="botcheck"]')?.setAttribute('value', '');
 
         if (contactStatus) {
           contactStatus.textContent = 'Thanks. Your inquiry was sent successfully.';
@@ -119,6 +131,7 @@
         if (submitButton) {
           submitButton.classList.remove('is-loading');
           submitButton.removeAttribute('disabled');
+          submitButton.removeAttribute('aria-busy');
         }
 
         if (submitLabel) {
