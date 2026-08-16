@@ -1041,17 +1041,6 @@ main {
   color: var(--blue-3);
   font-weight: 700;
 }
-
-.sasa {
-  display: inline-flex;
-  margin-bottom: 10px;
-  font-size: 0.8rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--blue-3);
-  font-weight: 700;
-
-}
   
 .company-values__list {
   grid-column: 1 / -1;
